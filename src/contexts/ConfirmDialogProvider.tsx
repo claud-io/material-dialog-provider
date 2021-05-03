@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { ConfirmDialogContext } from ".";
 import { ConfirmDialog } from "../components/ConfirmDialog";
+import { ConfirmDialogProps } from "../types";
 
 const initialState = {
   open: false,
@@ -9,7 +10,9 @@ const initialState = {
 };
 
 const ConfirmDialogProvider: React.FC = ({ children }) => {
-  const [modalProps, setModalProps] = useState(initialState);
+  const [modalProps, setModalProps] = useState<ConfirmDialogProps>(
+    initialState
+  );
   const promiseRef = useRef<{
     resolve: (value?: any) => void;
     reject: () => void;

@@ -9,14 +9,9 @@ import {
 import React from "react";
 import { ConfirmDialogProps } from "../types";
 
-export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
-  title,
-  description,
-  open,
-  onCancel,
-  onConfirm,
-  ...rest
-}) => {
+export const ConfirmDialog: React.FC<
+  ConfirmDialogProps & { onCancel: () => void; onConfirm: () => void }
+> = ({ title, description, open, onCancel, onConfirm, ...rest }) => {
   return (
     <Dialog aria-labelledby="confirmation-dialog-title" open={open} {...rest}>
       <DialogTitle id="confirmation-dialog-title">{title}</DialogTitle>
