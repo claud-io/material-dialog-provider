@@ -1,4 +1,4 @@
-import ModalProvider from "./contexts/ModalProvider";
-import { ModalContext } from "./contexts";
+import ConfirmDialogProvider from "./contexts/ConfirmDialogProvider";
+import { ConfirmDialogContext } from "./contexts";
 
-export { ModalContext, ModalProvider as default };
+export { ConfirmDialogContext, ConfirmDialogProvider as default };

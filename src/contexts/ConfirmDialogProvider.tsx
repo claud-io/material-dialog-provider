@@ -1,10 +1,6 @@
 import React, { useState, useRef } from "react";
-import { ModalContext } from ".";
+import { ConfirmDialogContext } from ".";
 import { ConfirmDialog } from "../components/ConfirmDialog";
-
-interface ModalProviderProps {
-  banana?: string;
-}
 
 const initialState = {
   open: false,
@@ -12,7 +8,7 @@ const initialState = {
   description: "",
 };
 
-const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
+const ConfirmDialogProvider: React.FC = ({ children }) => {
   const [modalProps, setModalProps] = useState(initialState);
   const promiseRef = useRef<{
     resolve: (value?: any) => void;
@@ -41,15 +37,15 @@ const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   };
 
   return (
-    <ModalContext.Provider value={{ confirm }}>
+    <ConfirmDialogContext.Provider value={{ confirm }}>
       {children}
       <ConfirmDialog
         {...modalProps}
         onCancel={onCancel}
         onConfirm={onConfirm}
       />
-    </ModalContext.Provider>
+    </ConfirmDialogContext.Provider>
   );
 };
 
-export default ModalProvider;
+export default ConfirmDialogProvider;
