@@ -29,14 +29,14 @@ const ConfirmDialogProvider: React.FC = ({ children }) => {
     if (promiseRef.current) {
       promiseRef.current.reject();
     }
-    setModalProps(initialState);
+    setModalProps((state) => ({ ...state, open: false }));
   };
 
   const onConfirm = () => {
     if (promiseRef.current) {
       promiseRef.current.resolve();
     }
-    setModalProps(initialState);
+    setModalProps((state) => ({ ...state, open: false }));
   };
 
   return (
