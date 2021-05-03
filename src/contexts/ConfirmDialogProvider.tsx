@@ -10,15 +10,15 @@ const initialState = {
 };
 
 const ConfirmDialogProvider: React.FC = ({ children }) => {
-  const [modalProps, setModalProps] = useState<ConfirmDialogProps>(
-    initialState
-  );
+  const [modalProps, setModalProps] = useState<
+    ConfirmDialogProps & { open: boolean }
+  >(initialState);
   const promiseRef = useRef<{
     resolve: (value?: any) => void;
     reject: () => void;
   }>();
 
-  const confirm = (options: any) => {
+  const confirm = (options: ConfirmDialogProps) => {
     setModalProps({ open: true, ...options });
     return new Promise((resolve, reject) => {
       promiseRef.current = { resolve, reject };
